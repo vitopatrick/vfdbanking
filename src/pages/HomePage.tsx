@@ -5,10 +5,16 @@ import FlexibleAndQuick from "../components/flexible-and-quick/FlexibleQuick";
 import HowItWork from "../components/how-it-works/HowItWork";
 import OurServices from "../components/services/OurServices";
 import Hero from "../components/hero/Hero";
+import { useChatSupport } from "../hooks/useChatSupport";
 
 type Props = {};
 
 const HomePage = (props: Props) => {
+
+
+
+  useChatSupport();
+
   return (
     <>
       {/* navigation bar */}
