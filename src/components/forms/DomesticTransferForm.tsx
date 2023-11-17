@@ -11,12 +11,12 @@ import { useNavigate } from "react-router-dom";
 type Props = {};
 
 // account type options
-const accountTypeOptions = [
-  "Checking Account",
-  "Savings Account",
-  "Fixed Deposit",
-  "Premium Leo Account",
-];
+// const accountTypeOptions = [
+//   "Checking Account",
+//   "Savings Account",
+//   "Fixed Deposit",
+//   "Premium Leo Account",
+// ];
 
 const formSchema = new yup.ObjectSchema({
   amount: yup.string().required().min(1),
@@ -161,10 +161,10 @@ const DomesticTransferForm = (props: Props) => {
           {...register("account_type")}
           className="font-min p-3 bg-slate-400/20 font-light"
         >
-          <option value="">checking account</option>
-          <option value="">fixed deposit account</option>
-          <option value="">savings account</option>
-          <option value="">Premium leo account</option>
+          <option value="checking">checking account</option>
+          <option value="fixed">fixed deposit account</option>
+          <option value="savings">savings account</option>
+          <option value="Premium leo">Premium leo account</option>
         </select>
       </div>
       <button

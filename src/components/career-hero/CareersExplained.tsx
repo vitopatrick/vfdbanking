@@ -1,12 +1,10 @@
-type Props = {};
-
 const pictures = [
   "https://internationalneo.online/bg/14.jpg",
   "https://internationalneo.online/bg/23.jpg",
   "https://internationalneo.online/bg/26.jpg",
 ];
 
-const CareersExplained = (props: Props) => {
+const CareersExplained = () => {
   return (
     <div className="bg-neutral-900">
       {/* container */}

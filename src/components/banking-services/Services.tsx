@@ -1,7 +1,3 @@
-import React from "react";
-
-type Props = {};
-
 // services
 const accounts = [
   "Private Current Account",
@@ -38,7 +34,7 @@ const accountTypes = [
   },
 ];
 
-const Services = (props: Props) => {
+const Services = () => {
   return (
     <div className="bg-neutral-900">
       {/* container */}

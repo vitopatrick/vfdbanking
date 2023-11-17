@@ -8,7 +8,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
 import { toast } from "react-toastify";
 
-type Props = {};
+
 
 type UserDetails = {
   email: string;
@@ -21,7 +21,7 @@ const schema = new yup.ObjectSchema({
   password: yup.string().min(6).required(),
 });
 
-const LoginForm = (props: Props) => {
+const LoginForm = () => {
   // check form
   const [isText, setIsText] = useState(false);
   const navigation = useNavigate();

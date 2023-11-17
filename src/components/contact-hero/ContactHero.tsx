@@ -1,6 +1,4 @@
-type Props = {};
-
-const ContactHero = (props: Props) => {
+const ContactHero = () => {
   return (
     <div className="h-[80vh] bg-slate-950">
       {/* container */}

@@ -1,7 +1,5 @@
 import { CreditCard, BanknoteIcon, Building2 } from "lucide-react";
 
-type Props = {};
-
 // reasons
 const reasons = [
   {
@@ -27,7 +25,7 @@ const reasons = [
   },
 ];
 
-const HowItWork = (props: Props) => {
+const HowItWork = () => {
   return (
     <div
       style={{

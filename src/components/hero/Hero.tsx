@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
 
-type Props = {};
 
-const Hero = (props: Props) => {
+const Hero = () => {
   return (
     <div
       style={{

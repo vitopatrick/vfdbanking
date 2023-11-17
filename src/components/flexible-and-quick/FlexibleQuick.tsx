@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
 
-type Props = {};
 
-const FlexibleAndQuick = (props: Props) => {
+const FlexibleAndQuick = () => {
   return (
     <div className="py-[3rem]">
       {/* container */}

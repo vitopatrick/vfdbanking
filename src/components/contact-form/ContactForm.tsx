@@ -1,8 +1,6 @@
 import { MapPinIcon, PhoneIcon, MailIcon } from "lucide-react";
 
-type Props = {};
-
-const ContactForm = (props: Props) => {
+const ContactForm = () => {
   return (
     <div>
       {/* container */}
