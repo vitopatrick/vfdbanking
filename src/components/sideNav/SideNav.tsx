@@ -71,7 +71,7 @@ const SideNav = ({ isBarOpen }: controls) => {
   return (
     <AnimatePresence>
       <motion.div
-        key={isBarOpen}
+        key={isBarOpen ? 0 : 1}
         initial={{
           translateX: -99,
         }}

@@ -78,7 +78,6 @@ const Register = (props: Props) => {
         createdAt: user.metadata.creationTime,
         accountBalance: 0,
         loanBalance: 0,
-        accountNumber: 0,
         verified: false,
         accountNumber: accountNumber,
       });
