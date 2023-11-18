@@ -45,7 +45,7 @@ const About = () => {
           <div className="bg-slate-600 p-4">
             <MailIcon color="#fff" />
           </div>
-          <p className="underline">info@internationalleo.online</p>
+          <p className="underline">support@internationalleo.online</p>
         </div>
       </div>
     </div>

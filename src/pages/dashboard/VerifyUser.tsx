@@ -30,7 +30,7 @@ const VerifyUser = (props: Props) => {
           </p>
         </Link>
         {/* Selfie Verification */}
-        <Link
+        {/* <Link
           to="/dashboard/selfie-verification"
           className="block  space-y-2 font-min p-3 border border-blue-600 bg-blue-100/10 my-[2rem] rounded-lg w-full md:w-[60%] mx-auto"
         >
@@ -40,7 +40,7 @@ const VerifyUser = (props: Props) => {
           <p className="font-light">
             Ensure you have good lighting as you prepare to take your selfie
           </p>
-        </Link>
+        </Link> */}
         <Outlet />
       </section>
     </div>

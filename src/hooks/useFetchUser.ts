@@ -1,6 +1,6 @@
 import { AuthContext } from "../context/AuthContext";
 import { useState, useContext, useEffect } from "react";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, onSnapshot } from "firebase/firestore";
 import { db } from "../firebase";
 
 type UserDetails = {};
@@ -13,32 +13,23 @@ export const useFetchUser = () => {
   const [error, setError] = useState<null | string>();
   const [loading, setLoading] = useState(false);
 
-  // use Memo hook to fetch user
+  const docRef = doc(db, "user", `${user.email}`);
+
   useEffect(() => {
-    const controller = new AbortController();
-
-    async function fetchUser() {
-      setLoading(true);
-      try {
-        const userRef = doc(db, "user", `${user.email}`);
-        const userFound = await getDoc(userRef);
+    onSnapshot(
+      docRef,
+      (userFound) => {
         setUserState({ ...userFound.data() });
-      } catch (error: any) {
-        console.error("Error fetching user:", error);
-        setError(error.message || "An error occurred");
+      },
+      (error) => {
+        setError(error.code);
       }
-
-      setLoading(false);
-    }
-
-    // run the function
-    fetchUser();
-    return () => controller.abort();
+    );
   }, [user.email]);
 
   const sideEffects = {
-    error,
     loading,
+    error,
   };
 
   return { ...sideEffects, userState };

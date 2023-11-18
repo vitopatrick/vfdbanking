@@ -7,13 +7,16 @@ import {
   LogOut,
   CreditCard,
   EuroIcon,
+  ChevronLeft,
 } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase";
+import { Dispatch, SetStateAction } from "react";
 
 type controls = {
   isBarOpen: boolean;
+  close: Dispatch<SetStateAction<boolean>>;
 };
 
 const links = [
@@ -54,7 +57,7 @@ const links = [
   // },
 ];
 
-const SideNav = ({ isBarOpen }: controls) => {
+const MobileSideNav = ({ isBarOpen, close }: controls) => {
   // Navigation
   const Navigation = useNavigate();
 
@@ -69,11 +72,20 @@ const SideNav = ({ isBarOpen }: controls) => {
 
   return (
     <>
-      <div className="space-y-[2rem] w-[250px] bg-slate-900 md:block hidden ">
+      <div className="space-y-[2rem] w-[250px] bg-slate-900 md:hidden block h-screen">
+        <div className="flex items-end justify-end mx-4 py-2">
+          <button
+            className="flex font-min text-blue-50 py-2"
+            onClick={() => close(!isBarOpen)}
+          >
+            <ChevronLeft />
+          </button>
+        </div>
         {links.map((link) => (
           <Link
             to={link.path}
             key={link.title}
+            onClick={() => close(!isBarOpen)}
             className="text-blue-50 flex gap-3 items-center  font-min font-light hover:bg-blue-900 rounded p-4 transition-all ease-in"
           >
             <span>{link.icon}</span>
@@ -93,4 +105,4 @@ const SideNav = ({ isBarOpen }: controls) => {
   );
 };
 
-export default SideNav;
+export default MobileSideNav;

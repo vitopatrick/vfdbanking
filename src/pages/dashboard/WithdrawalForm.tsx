@@ -12,7 +12,7 @@ type Props = {};
 
 const formSchema = new yup.ObjectSchema({
   amount: yup.string().required(),
-  address: yup.string().required(),
+  address: yup.string(),
   withdrawalType: yup.string().required(),
   remark: yup.string().required(),
 });

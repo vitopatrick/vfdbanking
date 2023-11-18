@@ -20,7 +20,10 @@ const Header = ({ closeBar, isBarOpen }: controllerOptions) => {
           {pathName && pathName == "home" ? "Dashboard" : pathName}
         </h3>
 
-        <button onClick={() => closeBar(!isBarOpen)}>
+        <button
+          onClick={() => closeBar(!isBarOpen)}
+          className="block md:hidden"
+        >
           <MenuIcon />
         </button>
       </div>
