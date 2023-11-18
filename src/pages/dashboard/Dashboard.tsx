@@ -10,7 +10,7 @@ import { AnimatePresence, motion } from "framer-motion";
 type Props = {};
 
 const Dashboard = (props: Props) => {
-  const [isOpen, setIsOpen] = useState<boolean>(true);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const { userState: user, loading } = useFetchUser();
 
