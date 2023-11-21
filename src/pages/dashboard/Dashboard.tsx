@@ -6,6 +6,7 @@ import { useFetchUser } from "../../hooks/useFetchUser";
 import { useAuth } from "../../hooks/useAuth";
 import MobileSideNav from "../../components/sideNav/MobileSideNav";
 import { AnimatePresence, motion } from "framer-motion";
+import LoadingModal from "../../components/ui/LoadingModal";
 
 type Props = {};
 
@@ -44,7 +45,7 @@ const Dashboard = (props: Props) => {
           <Header isBarOpen={isOpen} closeBar={setIsOpen} />
           {loading ? (
             <>
-              <p>Loading...</p>
+              <LoadingModal isOpen={loading} />
             </>
           ) : (
             user && <Outlet />

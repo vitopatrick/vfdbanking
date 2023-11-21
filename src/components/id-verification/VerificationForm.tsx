@@ -1,27 +1,83 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { toast } from "react-toastify";
-import { ref } from "firebase/storage";
-import { store } from "../../firebase";
+import { ref, uploadBytes } from "firebase/storage";
+import { db, store } from "../../firebase";
+import { doc, updateDoc } from "firebase/firestore";
+import { AuthContext } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+import LoadingModal from "../ui/LoadingModal";
 
 const VerificationForm = () => {
-  // ref for front and back of document
+  // ref for front and back of the document
   const frontPage = useRef<any>();
   const backPage = useRef<any>();
+  const Navigate = useNavigate();
 
-  // document state
-  const [document, setDocument] = useState();
+  const { user }: any = useContext(AuthContext);
 
-  let promises = [];
+  const [documentType, setDocumentType] = useState(""); // renamed from document to documentType
+  const [ssn, setSSN] = useState("");
+  const [submit, setSubmit] = useState(false);
 
-  // upload document to firebase
-  const uploadDocumentToFireStorage = async (e: any) => {
+  const handleUpload = async (e: any) => {
     e.preventDefault();
 
-    const bucketRef = ref(store);
+    setSubmit(true);
+
+    if (!ssn) {
+      setSubmit(false);
+      return toast.error("Please Enter SSN", {
+        position: "top-center",
+        bodyClassName: "toast",
+      });
+    }
+
+    if (!frontPage.current.files[0] || !backPage.current.files[0]) {
+      setSubmit(false);
+      return toast.error("Please select front and back images", {
+        position: "top-center",
+        bodyClassName: "toast",
+      });
+    }
 
     try {
+      // Upload image1
+      const storageRef1 = ref(
+        store,
+        `front-${documentType}/${frontPage.current.files[0].name}`
+      );
+      const uploadTask1 = uploadBytes(storageRef1, frontPage.current.files[0]);
+      await uploadTask1;
+
+      // Upload image2
+      const storageRef2 = ref(
+        store,
+        `back-${documentType}/${backPage.current.files[0].name}`
+      );
+      const uploadTask2 = uploadBytes(storageRef2, backPage.current.files[0]);
+      await uploadTask2;
+
+      // update the document
+      const documentRef = doc(db, "user", `${user.email}`);
+      await updateDoc(documentRef, {
+        ssn,
+        documentType,
+      });
+
+      // Navigate to home
+      Navigate("/dashboard/home");
+
+      toast.success("Image Uploaded", {
+        position: "top-center",
+        bodyClassName: "toast",
+      });
+      setSubmit(false);
     } catch (error: any) {
-      toast.error(error.code);
+      setSubmit(!submit);
+      toast.error(error.code, {
+        position: "bottom-center",
+        bodyClassName: "toast",
+      });
     }
   };
 
@@ -31,18 +87,18 @@ const VerificationForm = () => {
       <section className="w-full md:w-[50%] mx-auto">
         {/* card */}
         <div className="bg-neutral-100/50 rounded p-3 shadow-sm">
-          <form action="">
+          <form>
             {/* select */}
             <div className="flex flex-col font-min gap-2">
-              <label htmlFor="document" className="font-light">
+              <label htmlFor="documentType" className="font-light">
                 Document
               </label>
               <select
                 name="file"
                 id="file"
-                value={document}
+                value={documentType}
                 onChange={(e: React.ChangeEvent<HTMLSelectElement> | any) =>
-                  setDocument(e.target.value)
+                  setDocumentType(e.target.value)
                 }
                 className="bg-slate-400/30 p-3 rounded font-light"
               >
@@ -50,6 +106,20 @@ const VerificationForm = () => {
                 <option value="drivers license">Drivers license</option>
                 <option value="id">ID Card</option>
               </select>
+            </div>
+            {/* Security Number */}
+            <div className="flex flex-col font-min gap-2 mt-[2rem] mb-[1rem]">
+              <label htmlFor="SSN" className="font-light">
+                Social Security Number
+              </label>
+              <input
+                type="text"
+                name="ssn"
+                id="ssn"
+                value={ssn}
+                onChange={(e: any) => setSSN(e.target.value)}
+                className="bg-slate-400/30 p-3 rounded font-light"
+              />
             </div>
             <p className="my-4 text-sm font-min font-light capitalize">
               Make sure the document shows your photo, full name, date of birth
@@ -84,7 +154,7 @@ const VerificationForm = () => {
             {/* submit button */}
             <button
               type="submit"
-              onClick={uploadDocumentToFireStorage}
+              onClick={handleUpload}
               className="p-3 w-full bg-blue-500 rounded font-min font-normal capitalize text-blue-50"
             >
               submit document
@@ -92,6 +162,7 @@ const VerificationForm = () => {
           </form>
         </div>
       </section>
+      <LoadingModal isOpen={submit} />
     </div>
   );
 };
