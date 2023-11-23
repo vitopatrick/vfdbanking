@@ -8,12 +8,12 @@ import { getStorage } from "firebase/storage";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBQrzY8NnRfdiOhaM_0NMk_EqYbV3SeIA8",
-  authDomain: "internationalleo-d5383.firebaseapp.com",
-  projectId: "internationalleo-d5383",
-  storageBucket: "internationalleo-d5383.appspot.com",
-  messagingSenderId: "379525664289",
-  appId: "1:379525664289:web:c75cfa710e6feb9a025d60",
+  apiKey: "AIzaSyCRitF2-TlCDXRk5sVI9j3R1Pz0bYsiDIw",
+  authDomain: "vfbanking-190b0.firebaseapp.com",
+  projectId: "vfbanking-190b0",
+  storageBucket: "vfbanking-190b0.appspot.com",
+  messagingSenderId: "571805365228",
+  appId: "1:571805365228:web:8a377bf26901b1a6f986c9",
 };
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
