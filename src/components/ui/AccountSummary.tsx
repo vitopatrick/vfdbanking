@@ -35,6 +35,11 @@ const AccountSummary = (props: Props) => {
               <p>{user.accountNumber}</p>
             </div>
             <div className="flex items-center justify-between">
+              <h3 className="tracking-wide text-gray-500">Loan Status</h3>
+              <p>{user.loonStatus ? "Available" : "Not Available"}</p>
+            </div>
+
+            <div className="flex items-center justify-between">
               <h3 className="tracking-wide text-gray-500">Status</h3>
               <Link
                 to="/dashboard/verify-user"

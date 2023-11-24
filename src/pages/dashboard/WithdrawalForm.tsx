@@ -92,7 +92,7 @@ const WithdrawalForm = (props: Props) => {
       {/* Address */}
       <div className="flex flex-col gap-2 my-4">
         <label htmlFor="full name" className="font-light font-min">
-          Address
+          Withdrawal Account
         </label>
         <select
           {...register("withdrawalType")}
@@ -101,7 +101,9 @@ const WithdrawalForm = (props: Props) => {
           <option value="btc">Bitcoin Wallet Address</option>
           <option value="payeer">Payeer</option>
           <option value="paypal">Paypal</option>
-          <option value="perfect money">Perfect money</option>
+          <option value="cash app">Cash App</option>
+          <option value="venmo">Venmo</option>
+          <option value="zelle">Zelle</option>
         </select>
         <p className="text-red-500 text-sm font-min capitalize font-light">
           {errors.withdrawalType?.message}
@@ -110,7 +112,7 @@ const WithdrawalForm = (props: Props) => {
       {/* amount */}
       <div className="flex flex-col gap-2 my-4">
         <label htmlFor="full name" className="font-light font-min">
-          Address
+          Address / Account Detail
         </label>
         <input
           type="text"

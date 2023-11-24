@@ -33,7 +33,10 @@ export const useFetchTransactions = () => {
               approved: doc.data().approved,
               amount: parseInt(data.amount),
               date: new Date(data.date.toDate()).toDateString(),
-              remark: doc.data().remarks || doc.data().remark,
+              remark:
+                doc.data().remarks ||
+                doc.data().remark ||
+                doc.data().reasonForLoan,
               type: data.type,
               id: doc.id,
             });

@@ -23,11 +23,11 @@ const TransactionsControllerCard = ({}: Props) => {
       title: "Transfer",
       icon: <CandlestickChart color="#000" />,
     },
-    // {
-    //   path: "/dashboard/loan",
-    //   title: "Loan",
-    //   icon: <EuroIcon color="#000" />,
-    // },
+    {
+      path: "/dashboard/loan",
+      title: "Loan",
+      icon: <EuroIcon color="#000" />,
+    },
   ];
 
   const switchText = (location: string) => {
@@ -79,16 +79,30 @@ const TransactionsControllerCard = ({}: Props) => {
               {user && toDollar(user.accountBalance)}
             </motion.p>
           </div>
-          {/* book balance */}
-          <div className="space-y-3">
-            <p className="text-blue-50 font-min font-light">Book Balance</p>
+          {/* fixed balance */}
+          <div className="space-y-3 text-center">
+            <p className="text-blue-50 font-min font-light capitalize">
+              fixed deposit balance
+            </p>
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               key="modal"
               className="font-min text-xl md:text-2xl text-blue-200"
             >
-              {user && toDollar(user.accountBalance)}
+              {user && toDollar(user.fixedDepositBalance)}
+            </motion.p>
+          </div>
+          {/* loan balance */}
+          <div className="space-y-3">
+            <p className="text-blue-50 font-min font-light">Loan Balance</p>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              key="modal"
+              className="font-min text-xl md:text-2xl text-blue-200"
+            >
+              {user && toDollar(user.loanBalance)}
             </motion.p>
           </div>
         </div>
@@ -111,7 +125,6 @@ const TransactionsControllerCard = ({}: Props) => {
           {switchText(location.pathname)?.map((value) => (
             <button
               key={value.path}
-              disabled={location.pathname === "/dashboard/loan"}
               onClick={() => navigation(value.path)}
               className="block w-full text-center capitalize font-min font-normal text-blue-500 bg-blue-50 p-2 rounded"
             >

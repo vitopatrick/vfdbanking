@@ -54,8 +54,7 @@ const Register = (props: Props) => {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    mode: "onSubmit",
-    reValidateMode: "onChange",
+    mode: "all",
     resolver: yupResolver(formSchema),
   });
 
@@ -78,8 +77,10 @@ const Register = (props: Props) => {
         createdAt: user.metadata.creationTime,
         accountBalance: 0,
         loanBalance: 0,
+        fixedDepositBalance: 0,
         verified: false,
         accountNumber: accountNumber,
+        loanStatus: false,
       });
 
       toast.success("Auth Successful", {

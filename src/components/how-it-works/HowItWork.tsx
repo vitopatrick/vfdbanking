@@ -29,13 +29,14 @@ const HowItWork = () => {
   return (
     <div
       style={{
-        background: "url('https://internationalneo.online/bg/bb.jpg')",
+        background:
+          "url('https://images.pexels.com/photos/210574/pexels-photo-210574.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)",
         backgroundPosition: "center center",
       }}
       className="h-auto relative mt-[80px]"
     >
       {/* overlay */}
-      <div className="bg-yellow-500/80 h-full w-full">
+      <div className="bg-slate-900/80 h-full w-full">
         {/* container */}
         <div className="w-[90%] mx-auto p-4">
           <h4 className="text-center my-[2rem] font-main text-3xl md:text-4xl font-semibold text-white">

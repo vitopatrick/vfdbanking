@@ -47,11 +47,11 @@ const links = [
     title: "Withdraw",
     icon: <ArrowDownToLine />,
   },
-  // {
-  //   path: "loan",
-  //   title: "Loan",
-  //   icon: <EuroIcon />,
-  // },
+  {
+    path: "loan",
+    title: "Loan",
+    icon: <EuroIcon />,
+  },
 ];
 
 const SideNav = ({ isBarOpen }: controls) => {
@@ -69,7 +69,7 @@ const SideNav = ({ isBarOpen }: controls) => {
 
   return (
     <>
-      <div className="space-y-[2rem] w-[250px] bg-slate-900 md:block hidden ">
+      <div className="space-y-[2rem] w-[200px] bg-slate-900 md:block hidden ">
         {links.map((link) => (
           <Link
             to={link.path}

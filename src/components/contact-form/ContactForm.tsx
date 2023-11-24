@@ -40,13 +40,6 @@ const About = () => {
           </div>
           <p>MON-FRI , 09:00 AM - 05:00 PM</p>
         </div>
-        {/* address */}
-        <div className="flex gap-2 items-center  font-min font-light">
-          <div className="bg-slate-600 p-4">
-            <MailIcon color="#fff" />
-          </div>
-          <p className="underline">support@internationalleo.online</p>
-        </div>
       </div>
     </div>
   );

@@ -5,10 +5,11 @@ const Hero = () => {
   return (
     <div
       style={{
-        background: "url('https://internationalneo.online/bg/28.jpg')",
+        background:
+          "url('https://images.pexels.com/photos/2988232/pexels-photo-2988232.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')",
         backgroundPosition: "center center",
       }}
-      className="h-[80vh] md:h-screen"
+      className="h-[80vh] md:h-[120vh]"
     >
       <div className="w-full h-full bg-black/60">
         {/* container */}
