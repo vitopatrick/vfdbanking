@@ -38,7 +38,7 @@ const About = () => {
           <div className="bg-slate-600 p-4">
             <PhoneIcon color="#fff" />
           </div>
-          <p>MON-FRI , 09:00 AM - 05:00 PM</p>
+          <p>+447477176469</p>
         </div>
       </div>
     </div>
